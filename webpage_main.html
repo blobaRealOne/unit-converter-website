@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Unit converter</title>
+</head>
+<body>
+  <h1>Unit Converter</h1>
+  <form method="get">
+    <button type="submit" name="unit" value="length">Length</button>
+    <button type="submit" name="unit" value="weight">Weight</button>
+    <button type="submit" name="unit" value="temperature">Temperature</button>
+  </form>
+  <form method="post" action="/result">
+    <p>Enter the {unit} to convert</p>
+    <input type="number" name="input_data">
+
+    {error_msg}
+
+    <p>Unit to convert from</p>
+    <select name="units_from">
+      {options_from}
+    </select>
+    <p>Unit to convert to</p>
+    <select name="units_to">
+      {options_to}
+    </select>
+  <button type="submit">Convert</button>
+  </form>
+</body>
+</html>
