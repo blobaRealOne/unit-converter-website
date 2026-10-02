@@ -31,7 +31,7 @@ but with frameworks and stuff.
 ## Quick Start
 Run project directly using "uv" or Python:
 ```bash
-git clone [https://github.com/blobaRealOne/unit-converter-website.git](https://github.com/blobaRealOne/unit-converter-website.git
+git clone https://github.com/blobaRealOne/unit-converter-website.git
 python main.py
 ```
 then just input "http://localhost:8000" in your browser and there you have it
