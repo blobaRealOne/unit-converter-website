@@ -12,6 +12,7 @@ HTML_RESULT_TEMPLATE = (BASE_PATH / "webpage_result.html").read_text(encoding="u
 
 TempFunc = Callable[[float], float]
 
+
 class UnitInfo(TypedDict):
     symbol: str
     rate: NotRequired[float]
@@ -70,7 +71,13 @@ CONVERTERS: dict[str, CategoryInfo] = {
     },
 }
 
-OPTIONS = {category: "\n".join(f'<option value="{unit_name}">{unit_name.capitalize()}</option>' for unit_name in cat_data["units"]) for category, cat_data in CONVERTERS.items()}
+OPTIONS = {
+    category: "\n".join(
+        f'<option value="{unit_name}">{unit_name.capitalize()}</option>'
+        for unit_name in cat_data["units"]
+    )
+    for category, cat_data in CONVERTERS.items()
+}
 
 UNIT_TO_CATEGORY: dict[str, str] = {
     unit_name: category
@@ -110,7 +117,7 @@ class RequestHandler(BaseHTTPRequestHandler):
                 self.end_headers()
                 _ = self.wfile.write(html_result_b)
                 return
-            except (ValueError, KeyError, IndexError):
+            except ValueError, KeyError, IndexError:
                 self.redirect("/?error=1")
                 return
         else:
@@ -172,11 +179,14 @@ def webpage_result_mod_rt(data: dict[str, list[str]]) -> bytes:
     else:
         raise ValueError()
 
-    res_block = f"<p>{val_float} {u_from['symbol']} = {res_val:.6g} {u_to['symbol']}</p>"
+    res_block = (
+        f"<p>{val_float} {u_from['symbol']} = {res_val:.6g} {u_to['symbol']}</p>"
+    )
     page_setup = {"calc_res": res_block}
 
     html_result_mod = HTML_RESULT_TEMPLATE.format_map(page_setup)
     return html_result_mod.encode("utf-8")
+
 
 if __name__ == "__main__":
     server = HTTPServer(("localhost", 8000), RequestHandler)
