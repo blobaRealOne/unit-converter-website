@@ -4,36 +4,34 @@ Simple self-hosted unit converting website
 
 ## Why?
 
-So, basically, i been *really* bored recently, a decided "hey, a want to try all that webdev stuff"
-even throu i never did something like that before, and, well, i did, normally for that type of task people use
-frameworks such as Flask or Django, but where the sport in it? So, for the sake of sport, i decided
-to make it on pure python, like no JS, no extra framework and nominal almount of CSS styling, and for that
-exact reason i also decided to create server side render (SSR) of pages instead of just creating more of those pages,
-overall it’s been… not that bad actually, in sense of developing experiense, i might do something similar in the future
-but with frameworks.
+So, basically, I've been *really* bored recently, and decided "hey, I want to try all that webdev stuff"
+even though I never did something like that before, and, well, I did. Normally for that type of task people use
+frameworks such as Flask or Django, but where's the sport in it? So, for the sake of sport, I decided
+to make it in pure Python, like no JS, no extra frameworks and a nominal amount of CSS styling. For that
+exact reason I also decided to create server-side rendering (SSR) of pages instead of just creating more of those pages.
+Overall it’s been… not that bad actually, in sense of developing experience. I might do something similar in the future
+but with frameworks and stuff.
 
 > [!WARNING]
-> This probally shoud be obvious, but this project is not a production-ready, it’s
-> lack many safety features, such as any form of defense against DoS and DDoS attack, doesn’t
-> use HTTPS porotocol and some other things that i didn’t mention here, so don’t use it for production
+> This probably should be obvious, but this project is not production-ready. It
+> lacks many safety features, such as any form of defense against DoS and DDoS attacks, doesn’t
+> use HTTPS protocol and some other things that I didn’t mention here, so don’t use it for production.
 
 
 ## Features
--- No extra liblary (pure python)
--- server-side rendering (SSR)
--- stateless (no cookies, no database, no sessions, etc)
--- input validation, included edge-case scenarios
+- No extra libraries (pure Python)
+- Server-side rendering (SSR)
+- Stateless (no cookies, no database, no sessions, no accounts, etc.)
+- Input validation, including edge-case scenarios
 
 ## Tech Stack
--- Python (3.11+)
--- http.server
+- Python (3.11+)
+- http.server
 
 ## Quick Start
-Run project directly using "uv" or python:
-<!-- TODO -->
-<!-- add real project name -->
+Run project directly using "uv" or Python:
 ```bash
-git clone [https://github.com/blobaRealOne/projectname]
+git clone [https://github.com/blobaRealOne/unit-converter-website.git](https://github.com/blobaRealOne/unit-converter-website.git
 python main.py
 ```
-then just input "http://localhost:8000" in you browser and call it a day
+then just input "http://localhost:8000" in your browser and there you have it
