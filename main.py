@@ -6,19 +6,9 @@ from typing import NotRequired, TypedDict
 from urllib.parse import parse_qs, urlsplit
 
 BASE_PATH = Path(__file__).resolve().parent
-MAIN_WEBPAGE_PATH = str(BASE_PATH / "webpage_main.html")
-RESULT_WEBPAGE_PATH = str(BASE_PATH / "webpage_result.html")
 
-def fileread(filepath: str) -> str:
-    try:
-        with open(filepath, "r", encoding="utf-8") as file:
-            return file.read()
-    except OSError as err:
-        print(err)
-        raise
-
-HTML_MAIN_TEMPLATE = fileread(MAIN_WEBPAGE_PATH)
-HTML_RESULT_TEMPLATE = fileread(RESULT_WEBPAGE_PATH)
+HTML_MAIN_TEMPLATE = (BASE_PATH / "webpage_main.html").read_text(encoding="utf-8")
+HTML_RESULT_TEMPLATE = (BASE_PATH / "webpage_result.html").read_text(encoding="utf-8")
 
 TempFunc = Callable[[float], float]
 
@@ -112,7 +102,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         if self.path == "/result":
             length = int(self.headers.get("Content-Length", 0))
             body = self.rfile.read(length)
-            data = parse_qs(body.decode("utf-8"))
+            data = parse_qs(body.decode("utf-8"), keep_blank_values=True)
             try:
                 html_result_b = webpage_result_mod_rt(data)
                 self.send_response(200)
@@ -190,4 +180,7 @@ def webpage_result_mod_rt(data: dict[str, list[str]]) -> bytes:
 
 if __name__ == "__main__":
     server = HTTPServer(("localhost", 8000), RequestHandler)
-    server.serve_forever()
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        server.server_close()
