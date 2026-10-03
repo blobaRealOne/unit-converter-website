@@ -25,13 +25,26 @@ but with frameworks and stuff.
 - Input validation, including edge-case scenarios
 
 ## Tech Stack
-- Python (3.11+)
+- Python (3.14+)
 - http.server
 
 ## Quick Start
 Run project directly using "uv" or Python:
 ```bash
 git clone https://github.com/blobaRealOne/unit-converter-website.git
+cd unit-converter-website
+```
+
+for python:
+
+```bash
 python main.py
 ```
+
+for uv:
+
+```bash
+uv run main.py
+```
+
 then just input "http://localhost:8000" in your browser and there you have it
