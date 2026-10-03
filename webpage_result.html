@@ -2,17 +2,100 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unit converter</title>
+
+  <style>
+  * {{
+    box-sizing: border-box;
+  }}
+
+  body {{
+    margin: 0;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+  }}
+
+  .container {{
+    width: min(100%, 520px);
+    margin: 0 auto;
+    padding: 30px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+  }}
+
+  h1 {{
+    margin-top: 0;
+    margin-bottom: 24px;
+    text-align: center;
+  }}
+
+  .category-buttons {{
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+  }}
+
+  .category-buttons button {{
+    flex: 1;
+  }}
+
+  button {{
+    min-height: 40px;
+    padding: 8px 10px;
+    font: inherit;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    background: #f7f7f7;
+    cursor: pointer;
+  }}
+
+  button:hover {{
+    background: #eaeaea;
+  }}
+
+  .result {{
+    margin: 20px 0;
+    padding: 18px;
+    background: #f4f6f8;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 1.15rem;
+  }}
+
+  .reset-link {{
+    display: inline-block;
+    margin-top: 8px;
+    color: #555;
+    text-decoration: none;
+  }}
+
+  .reset-link:hover {{
+    text-decoration: underline;
+  }}
+  </style>
 </head>
+
 <body>
-  <h1>Unit Converter</h1>
-  <form method="get" action="/">
-    <button type="submit" name="unit" value="length">Length</button>
-    <button type="submit" name="unit" value="weight">Weight</button>
-    <button type="submit" name="unit" value="temperature">Temperature</button>
-  </form>
-  <p>Result of your calculation</p>
-  {calc_res}
-  <a href="/"><button type="button">Reset</button></a>
+  <main class="container">
+    <h1>Unit Converter</h1>
+
+    <form method="get" action="/" class="category-buttons">
+      <button type="submit" name="unit" value="length">Length</button>
+      <button type="submit" name="unit" value="weight">Weight</button>
+      <button type="submit" name="unit" value="temperature">Temperature</button>
+    </form>
+
+    <p>Result of your calculation</p>
+
+    <div class="result">
+      {calc_res}
+    </div>
+
+    <a class="reset-link" href="/">Reset</a>
+  </main>
 </body>
 </html>
