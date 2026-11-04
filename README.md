@@ -40,4 +40,4 @@ uv run main.py
 python main.py
 ```
 
-Then open [localhost:8000](http://localhost:8000) in your browser.
+Then open http://localhost:8000 in your browser.
