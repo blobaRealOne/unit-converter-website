@@ -1,6 +1,7 @@
 # TODO
 # 1. Add screenshots of work in README.md
 # 2. Add Describtion block on github
+# 3. Add some test from unittest or smth
 """Provide a simple web-based unit conversion application.
 
 The application uses the standard library's HTTP server to handle
@@ -14,7 +15,7 @@ functions for units that require an offset or a different scale.
 import math
 from collections.abc import Callable
 from decimal import Decimal
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import NotRequired, TypedDict
 from urllib.parse import parse_qs, urlsplit
@@ -382,7 +383,7 @@ def format_number(value: float) -> str:
 
 
 if __name__ == "__main__":
-    server = HTTPServer(("localhost", 8000), RequestHandler)
+    server = ThreadingHTTPServer(("localhost", 8000), RequestHandler)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
