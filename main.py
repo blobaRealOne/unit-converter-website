@@ -1,7 +1,6 @@
 # TODO
 # 1. Add screenshots of work in README.md
 # 2. Add Describtion block on github
-# 3. change version to "1.0.0" in pyproject.toml by "uv version 1.0.0"
 """Provide a simple web-based unit conversion application.
 
 The application uses the standard library's HTTP server to handle
@@ -201,7 +200,11 @@ class RequestHandler(BaseHTTPRequestHandler):
         """
         url = urlsplit(self.path)
         url_path = url.path
-        url_query = parse_qs(url.query, keep_blank_values=True, max_num_fields=20)
+        try:
+            url_query = parse_qs(url.query, keep_blank_values=True, max_num_fields=20)
+        except ValueError:
+            self.send_error(400, "Too many query fields")
+            return
         if url_path == "/":
             raw_unit = url_query.get("unit", ["length"])[0]
             unit = raw_unit if raw_unit in CONVERTERS else "length"
