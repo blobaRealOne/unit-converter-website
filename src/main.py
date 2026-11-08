@@ -1,7 +1,6 @@
 # TODO
 # 1. Add screenshots of work in README.md
 # 2. Add Describtion block on github
-# 3. Add some test from unittest or smth
 """Provide a simple web-based unit conversion application.
 
 The application uses the standard library's HTTP server to handle

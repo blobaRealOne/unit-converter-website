@@ -12,6 +12,7 @@ Project idea based from [roadmap.sh](https://roadmap.sh/projects/unit-converter)
 - Server-side rendering (SSR)
 - Stateless (no cookies, no database, no sessions, no accounts, etc.)
 - Input validation, including edge-case scenarios
+- Test coverage
 
 ## Tech Stack
 - Python 3.15+
