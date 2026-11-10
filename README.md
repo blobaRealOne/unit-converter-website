@@ -32,13 +32,13 @@ cd unit-converter-website
 **Using uv:**
 
 ```bash
-uv run main.py
+uv run src/main.py
 ```
 
 **Using Python:**
 
 ```bash
-python main.py
+python src/main.py
 ```
 
 Then open http://localhost:8000 in your browser.
